@@ -11,6 +11,7 @@ I've populated my PowerShell table with a year's worth of disk information from 
 ## Verifying Reporting Services
 
 I'm going to start by launching the Reporting Services Configuration Manager. I'll log in, and then just verify that all of the services and whatnot are running properly.
+
 ![image023.png](images/image023.png)
 
 
@@ -24,6 +25,7 @@ Also note that Reporting Services has its own embedded Web server; it doesn't de
 Note: I'm going to breeze through this report-creating stuff - you'll find a more complete tutorial at [http://msdn.microsoft.com/en-us/library/ms167559%28v=sql.110%29.aspx](http://msdn.microsoft.com/en-us/library/ms167559%28v=sql.110%29.aspx).
 
 Also note: I had to explicitly run Internet Explorer "as Administrator" to get Reporting Services to recognize me. Because I didn't feel like playing with permissions for this ebook, I just went with that.
+
 ![image025.png](images/image025.png)
 
 
@@ -35,10 +37,12 @@ Next, we have to create a data source within this folder. This is the database w
 As you can see, I just needed to specify the server and database portion of the connection string. I've selected Windows Integrated Security, meaning my login account will be used to access the data. Always use the Test Connection button to make sure this is working.
 
 Note that we aren't actually going to use this data source, but I wanted to show you how to create one because once you start really getting into SSRS, having predefined sources can be very handy.
+
 ![image027.png](images/image027.png)
 
 
 Back in the folder, we can see the new data source.
+
 ![image029.png](images/image029.png)
 
 ## Building a Report
@@ -48,29 +52,35 @@ But now we've got to take a bit of a departure. You can't actually design report
 
 
 I'm going to pick the Chart Wizard for my new report.
+
 ![image033.png](images/image033.png)
 
 
 
 I need to create a new dataset (because this isn't linked to the Reporting Services installation, there's no access to any shared datasets created there).
+
 ![image035.png](images/image035.png)
 
 
 This is a lot like the data source setup we did in Report Manager, which is one reason I wanted to show it to you there first. Always test the connection before proceeding!
+
 ![image037.png](images/image037.png)
 
 
 Choose the table that contains the data you need. You can rearrange the fields using the little blue arrows, and then change grouping and aggregating of specific fields (like generating averages, min, max, and so on). Because I have only one table, there are no relationships to mess with, and I don't want to filter out any of the data.
 
 If you're good with SQL Server, you can click "Edit as Text" to manually edit the SQL query instead of using the GUI. I'm actually going to do that, so that I can combine the ComputerName and DeviceID fields into a single field.
+
 ![image039.png](images/image039.png)
 
 
 I've named this combined field "Computer-Drive," and I clicked the "!" button to run the query and test the results. That's just what I want.
+
 ![image041.png](images/image041.png)
 
 
 I'm going to choose the Line chart type next, so that I can get a trend line.
+
 ![image043.png](images/image043.png)
 
 
@@ -78,34 +88,39 @@ Next, I decide which bits of data go where. The "Computer\_Drive" column will be
 
 The next screen lets you pick a visual style for the chart.
 
-
 ![image045.png](images/image045.png)
 
 
 Er, yeah. After running the report (using the "Run" button in the ribbon), I'm not impressed. Back to Design.
+
 ![image047.png](images/image047.png)
+
 A little resizing, and double-clicking to edit the chart title, might help.
+
 ![image049.png](images/image049.png)
 
 
 W00t! We're definitely getting there. Now's when I could think of some potential changes to make.
 
 
-
 ![image051.png](images/image051.png)
 
 
 I want to edit my query a bit, so I'll right-click my data set and edit the Query.
+
 ![image053.png](images/image053.png)
+
 I've removed Size, because I'm not really using it. I've added an ORDER BY clause to make sure the data appears in date order, and I've added a calculation to display free space in megabytes instead of bytes, rounded to two decimal places. Note that I've been careful to name the resulting field the same name - "FreeSpace" - by using the AS option. Because my report is already looking for FreeSpace, it's important that the field continue to exist by that name.
 
 ![image055.png](images/image055.png)
 
 I've edited the axis titles of the chart and made it a bit bigger.
+
 ![image057.png](images/image057.png)
 
 
 Not bad. I could continue tweaking this - maybe using the T-SQL date/time functions to generate nicer-looking dates along the "X" axis - but let's call it "good" for now. I'll switch back into design mode and save this as DiskFreeSpace.rdl on the file system.
+
 ![image059.png](images/image059.png)
 
 Back in the Web-based Report Manager, in my folder, I'll click Upload File to upload that .RDL file.
