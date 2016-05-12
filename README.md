@@ -1,0 +1,1 @@
+Automating Excel is difficult in PowerShell, but it's the only way to get cool-looking reports that have graphs and stuff, right? Wrong: it's time to take the easy road, ditch Excel, and produce automated, beautiful reports the RIGHT way.
