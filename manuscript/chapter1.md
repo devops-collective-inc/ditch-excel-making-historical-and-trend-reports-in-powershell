@@ -34,32 +34,37 @@ As a bonus, as I walk you through this installation, I'm going to point out a fe
 Starting after your SQL Server 2012 Express (with Advanced Services) download completes, you're going to double-click the installer to kick things off. If your computer has User Account Control (UAC) enabled, make sure you run the installer as Administrator, because that's what you'll be running PowerShell as. It's important that SQL Server be available to the same account that you use to launch PowerShell.
 
 You're going to do a new stand-alone installation, so click that link:
+
 ![image005.png](images/image005.png)
 
 
 
 By the way, it's generally fine to have SQL Server 2012 installed alongside another version, should you happen to have another version already installed.
 
-SQL Server's installation wizard will go through several screens, including a license agreement, some pre-requisite checks, blah blah blah. It's a pageant. Here's where you come in:
+SQL Server's installation wizard will go through several screens, including a license agreement, some pre-requisite checks, blah blah blah. It's a pageant. Here's where you come in:\
 ![image007.png](images/image007.png)
 
 
 Those defaults are pretty much what you want. Click Next.
+
 ![image009.png](images/image009.png)
 
 This is an important bit. SQL Server Express installs a named instance of itself, named SQLExpress. This will fail if you already have an instance running under that name. A named instance is basically a copy of SQL Server that requires you to specify your computer name and the instance name in order to connect. Whatever you put here, remember it. I'm going to assume you're sticking with the default SQLEXPRESS.
 
 Confirm your disk space requirements on the next screen, and get to the server configuration:
+
 ![image011.png](images/image011.png)
 
 
 For our purposes, the defaults are fine. Next is the Database Engine configuration:
+
 ![image013.png](images/image013.png)
 
 
 Again, the defaults are fine if you're just installing SQL Server to support this reporting functionality. It's going to default to Windows authentication, meaning it uses your current login, and it's going to add your current login account as an administrator of SQL Server.
 
 This is important: SQL Server has this feature called "user instances." It means that, if a non-admin tries to run SQL Server, they get their own isolated instance of it. It's all magical and transparent, but it won't include the databases from other instances. So it's really important to make sure that the "Specify SQL Server administrators" box lists the user account(s) that you'll use to run PowerShell. Otherwise we'll never get everything to match up. You can add accounts, including domain accounts, if needed. You're just giving these accounts permissions inside your local SQL Server installation, so it's no big danger or security risk.
+
 ![image015.png](images/image015.png)
 
 
@@ -84,10 +89,12 @@ They're going to have to tell you the server name also, and if your database isn
 ## Making a Database
 
 If you're using a local SQL Server Express instance, start by opening SQL Server Management Studio. Log in using Windows Authentication and whatever account you use to run PowerShell - you won't provide a password here. Notice that it's pointed at my computer name ("MOC") and instance name ("SQLEXPRESS").
+
 ![image017.png](images/image017.png)
 
 
 Right-click the Databases folder, select New Database, and fill in the dialog box.
+
 ![image019.png](images/image019.png)
 
 You can pretty much accept the defaults after supplying a database name (letters only to keep it simple; I've used "PowerShell"). I'm skipping over a _lot_ of SQL Server details, here; suffice to say that these defaults result in a pretty maintenance-free database. Scroll to the right a bit to change the location of the database files.
