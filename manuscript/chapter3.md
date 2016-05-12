@@ -10,14 +10,7 @@ I've populated my PowerShell table with a year's worth of disk information from 
 
 ## Verifying Reporting Services
 
-I'm going to start by launching the Reporting Services Configuration Manager. I'll log in:
-![image021.png](images/image021.png)
-
-
-
-
-
-And then just verify that all of the services and whatnot are running properly.
+I'm going to start by launching the Reporting Services Configuration Manager. I'll log in, and then just verify that all of the services and whatnot are running properly.
 ![image023.png](images/image023.png)
 
 
