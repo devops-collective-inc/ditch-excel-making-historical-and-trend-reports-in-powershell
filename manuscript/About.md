@@ -11,7 +11,7 @@ Automating Excel is difficult in PowerShell, but it's the only way to get cool-l
 
 This guide is released under the Creative Commons Attribution-NoDerivs 3.0 Unported License. The authors encourage you to redistribute this file as widely as possible, but ask that you do not modify the document.
 
-**Getting the Code** The code related to this book can be found at https://onedrive.live.com/redir?resid=7f868aa697b937fe%21107. If you are using WMF5 or later, you can also use Install-Module to install the [[[PENDING]]] module from the http://powershellgallery.com.
+**Getting the Code** The code related to this book can be found at https://github.com/devops-collective-inc/ditch-excel-making-historical-and-trend-reports-in-powershell/tree/master/attachments.
 
 **Was this book helpful?** The author(s) kindly ask(s) that you make a tax-deductible (in the US; check your laws if you live elsewhere) donation of any amount to [The DevOps Collective](https://devopscollective.org/donate/) to support their ongoing work.
 
